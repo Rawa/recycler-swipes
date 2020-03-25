@@ -1,0 +1,3 @@
+rootProject.name='RecyclerSwipesSample'
+include ':sample'
+include ':recyclerswipes'
