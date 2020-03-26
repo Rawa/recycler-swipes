@@ -47,9 +47,11 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         val itemView: View = viewHolder.itemView
 
-        swipeViewMap = swipeLayouts.map { (direction, layout) ->
-            direction to inflateLayout(itemView.context, layout)
-        }.toMap()
+        if (!::swipeViewMap.isInitialized) {
+            swipeViewMap = swipeLayouts.map { (direction, layout) ->
+                direction to inflateLayout(itemView.context, layout)
+            }.toMap()
+        }
 
         when {
             // canvas, swipeView, width, height, dY, dX
@@ -142,8 +144,7 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
     }
 
     private fun inflateLayout(context: Context, @LayoutRes layout: Int): View {
-        val li: LayoutInflater =
-            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val li: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         return li.inflate(layout, null)
     }
 }
