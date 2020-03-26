@@ -11,9 +11,20 @@
     <View
         android:layout_width="4dp"
         android:layout_height="4dp"
-        android:layout_gravity="center"
-        android:background="#00f" />
+        android:layout_gravity="center_horizontal"
+        android:background="#0f0" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="40dp"
+        android:background="#ff0"
+        android:gravity="end"
+        android:maxLines="1"
+        android:text="@string/action_archive"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
