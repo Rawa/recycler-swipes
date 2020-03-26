@@ -52,7 +52,6 @@ dependencies {
 
     implementation "io.reactivex.rxjava3:rxjava:$rxJava"
     implementation "io.reactivex.rxjava3:rxandroid:$rxAndroid"
-    implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlin"
 
     implementation "com.jakewharton.rxbinding3:rxbinding:$rxBinding"
     implementation "androidx.recyclerview:recyclerview:$recyclerView"

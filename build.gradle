@@ -8,7 +8,6 @@ buildscript {
 
         rxJava = "3.0.1"
         rxAndroid = "3.0.0"
-        rxKotlin = "3.0.0"
         rxBinding = "3.1.0"
 
         recyclerView = "1.1.0"
