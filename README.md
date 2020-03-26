@@ -1,6 +1,6 @@
 # Recycler Swipes
 
-Simple library to make it easily implement swiping gestures on a recycler view by using xml.
+Simple library to make it easily implement swiping gestures on a recyclerview. Simply create your views in XML or Code and bind them to swipe directions.
 
 ## Demo
 
