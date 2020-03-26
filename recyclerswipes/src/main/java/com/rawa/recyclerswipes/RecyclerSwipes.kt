@@ -1,14 +1,11 @@
 package com.rawa.recyclerswipes
 
-import android.app.ActionBar
 import android.content.Context
 import android.graphics.Canvas
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.core.view.updateLayoutParams
+import androidx.core.graphics.withTranslation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
@@ -58,8 +55,7 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
 
         when {
             // canvas, swipeView, width, height, dY, dX
-            dX > 0 -> {
-                // Swipe to right
+            dX > 0 && swipeViewMap.containsKey(SwipeDirection.RIGHT) -> {
                 val swipeView = swipeViewMap.getValue(SwipeDirection.RIGHT)
                 val width = min(dX.toInt(), itemView.width)
                 renderSwipeView(
@@ -71,7 +67,7 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
                     itemView.top.toFloat()
                 )
             }
-            dY > 0 -> {
+            dY > 0 && swipeViewMap.containsKey(SwipeDirection.DOWN) -> {
                 // Swipe to down
                 val swipeView = swipeViewMap.getValue(SwipeDirection.DOWN)
                 val height = min(dY.toInt(), itemView.height)
@@ -84,7 +80,7 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
                     itemView.top.toFloat()
                 )
             }
-            dX < 0 -> {
+            dX < 0 && swipeViewMap.containsKey(SwipeDirection.LEFT) -> {
                 // Swipe to left
                 val swipeView = swipeViewMap.getValue(SwipeDirection.LEFT)
                 val width = min(abs(dX.toInt()), itemView.width)
@@ -98,7 +94,7 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
                     itemView.top.toFloat()
                 )
             }
-            dY < 0 -> {
+            dY < 0 && swipeViewMap.containsKey(SwipeDirection.UP) -> {
                 // Swipe to up
                 val swipeView = swipeViewMap.getValue(SwipeDirection.UP)
                 val height = min(abs(dY.toInt()), itemView.height)
@@ -127,24 +123,16 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
         transX: Float,
         transY: Float
     ) {
-        view.updateLayoutParams {
-            this.width = ViewGroup.LayoutParams.MATCH_PARENT
-            this.height = ViewGroup.LayoutParams.MATCH_PARENT
-        }
         view.measure(
             View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
             View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY)
         )
-        view.translationY = transY
-        view.translationX = transX
         view.layout(0, 0, width, height)
         view.requestLayout()
-        view.invalidate()
 
-        c.save()
-        c.translate(transX, transY)
-        view.draw(c)
-        c.restore()
+        c.withTranslation(transX, transY) {
+            view.draw(c)
+        }
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -156,11 +144,8 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
     }
 
     private fun inflateLayout(context: Context, @LayoutRes layout: Int): View {
-        val li: LayoutInflater =
-            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val v = li.inflate(layout, null)
-        v.layoutParams = ViewGroup.LayoutParams(0, 0)
-        return v
+        val li: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        return li.inflate(layout, null)
     }
 }
 
