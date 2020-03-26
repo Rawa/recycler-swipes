@@ -25,7 +25,7 @@ Simple library to make it easily implement swiping gestures on a recycler view b
 
 For complete example clone the repository and run the sample app.
 
-Prefer to use AppCompat/MaterialComponents due to some elements such as `TextView` having bugs in older versions and does not always behave correctly with `android:singleLine=true`.
+Prefer to use AppCompat/MaterialComponents Views due to some elements such as `TextView` are more prone to have bugs in older versions. E.g TextView can in some cases not be rendered if using `android:singleLine=true` while AppCompatTextView will work fine.
 
 ## Installation
 
