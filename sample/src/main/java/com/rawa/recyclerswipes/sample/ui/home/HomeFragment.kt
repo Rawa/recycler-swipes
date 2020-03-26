@@ -44,26 +44,23 @@ class HomeFragment : Fragment() {
         )
 
         swipes.attachTo(recyclerView)
-        swipes.setOnSwipeListener(object : OnSwipeListener {
-            override fun onSwipe(viewHolder: RecyclerView.ViewHolder, direction: SwipeDirection) {
-                when (direction) {
-                    SwipeDirection.LEFT -> {
-                        val id = adapter.getItemId(viewHolder.adapterPosition)
-                        Toast.makeText(context, "Word blocked", Toast.LENGTH_SHORT).show()
-                        homeViewModel.deleteWord(id)
-                    }
-                    SwipeDirection.RIGHT -> {
-                        val id = adapter.getItemId(viewHolder.adapterPosition)
-                        Toast.makeText(context, "Word deleted", Toast.LENGTH_SHORT).show()
-                        homeViewModel.deleteWord(id)
-                    }
-                    else -> {
-                        throw UnsupportedOperationException("$direction is not supported")
-                    }
+        swipes.setOnSwipeListener { vH: RecyclerView.ViewHolder, dir: SwipeDirection ->
+            when (dir) {
+                SwipeDirection.LEFT -> {
+                    val id = adapter.getItemId(vH.adapterPosition)
+                    Toast.makeText(context, "Word blocked", Toast.LENGTH_SHORT).show()
+                    homeViewModel.deleteWord(id)
+                }
+                SwipeDirection.RIGHT -> {
+                    val id = adapter.getItemId(vH.adapterPosition)
+                    Toast.makeText(context, "Word deleted", Toast.LENGTH_SHORT).show()
+                    homeViewModel.deleteWord(id)
+                }
+                else -> {
+                    throw UnsupportedOperationException("$dir is not supported")
                 }
             }
-        })
-
+        }
 
         return root
     }

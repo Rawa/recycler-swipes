@@ -145,6 +145,20 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
         this.listener = listener
     }
 
+    fun setOnSwipeListener(lambda: ((viewHolder: RecyclerView.ViewHolder, direction: SwipeDirection) -> Unit)?) {
+        val listener =  if(lambda == null) {
+            null
+        } else {
+            object: OnSwipeListener {
+                override fun onSwipe(viewHolder: RecyclerView.ViewHolder, direction: SwipeDirection) {
+                    lambda.invoke(viewHolder, direction)
+                }
+
+            }
+        }
+        setOnSwipeListener(listener)
+    }
+
     private fun inflateLayout(context: Context, @LayoutRes layout: Int): View {
         val li: LayoutInflater = context.getSystemService()!!
         return li.inflate(layout, null, false)
