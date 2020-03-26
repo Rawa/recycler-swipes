@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.rawa.recyclerswipes.OnSwipeListener
 import com.rawa.recyclerswipes.RecyclerSwipes
 import com.rawa.recyclerswipes.SwipeDirection
 import com.rawa.recyclerswipes.attachTo
