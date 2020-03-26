@@ -24,3 +24,24 @@ Simple library to make it easily implement swiping gestures on a recycler view b
     }
 
 Prefer to use AppCompat/MaterialComponents due to some elements such as `TextView` having bugs in older versions and does not always behave correctly with `android:singleLine=true`.
+
+# Installation
+
+Add jitpack to your repositories in your project's `build.gradle`
+
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' } // Add this line
+		}
+	}
+    
+Add the dependencies to your app's `app/build.gradle`
+
+    // Get version from releases
+    implementation 'com.github.rawa.recycler-swipes:recyclerswipes:x.y.z'
+    
+    // And if you want RxBinding support
+    implementation 'com.github.rawa.recycler-swipes:recyclerswipes-rxbinding:x.y.z'
+
+
