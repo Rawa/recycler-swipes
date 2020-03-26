@@ -4,6 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="action_archive">Block</string>
-    <string name="action_peekaboo">Peekaboo</string>
+    <string name="action_peekaboo">Peekaboo!</string>
     <string name="action_delete">Delete</string>
 </resources>
