@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#ff0000">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_delete_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -16,11 +16,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:background="#00f"
         android:ellipsize="none"
         android:gravity="center_vertical"
         android:singleLine="true"
@@ -29,28 +28,6 @@
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_delete_icon"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="40dp"
-        android:background="#ff0"
-        android:gravity="end"
-        android:maxLines="1"
-        android:text="@string/action_archive"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_delete_icon" />
-
-    <View
-        android:layout_width="4dp"
-        android:layout_height="4dp"
-        android:layout_gravity="center"
-        android:background="#0f0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

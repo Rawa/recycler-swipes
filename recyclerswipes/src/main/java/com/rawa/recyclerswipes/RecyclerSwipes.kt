@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.Canvas
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.core.content.getSystemService
 import androidx.core.graphics.withTranslation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +24,7 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
 
     init {
         require(swipeLayouts.isNotEmpty()) {
-            "Swipe bindings must contain at least one"
+            "Swipe bindings cannot be empty"
         }
     }
 
@@ -131,6 +131,8 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
         swipeView.layout(0, 0, width, height)
 
         c.withTranslation(transX, transY) {
+            // Clip so view does not draw outside of intended layout
+            c.clipRect(0, 0, width, height)
             swipeView.draw(c)
         }
     }
@@ -144,8 +146,8 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
     }
 
     private fun inflateLayout(context: Context, @LayoutRes layout: Int): View {
-        val li: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        return li.inflate(layout, null)
+        val li: LayoutInflater = context.getSystemService()!!
+        return li.inflate(layout, null, false)
     }
 }
 
