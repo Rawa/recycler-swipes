@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.Rawa'
+group='com.github.rawa'
 
 android {
     compileSdkVersion 29
@@ -30,15 +30,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.core:core-ktx:$ktx"
+
+    implementation "io.reactivex.rxjava3:rxjava:$rxJava"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxAndroid"
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlin"
+
+    implementation "com.jakewharton.rxbinding3:rxbinding:$rxBinding"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
+
     implementation project(':recyclerswipes')
-
-    implementation "io.reactivex.rxjava3:rxjava:3.0.1"
-    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
-    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
-
-    implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
 }

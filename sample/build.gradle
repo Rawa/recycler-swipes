@@ -40,8 +40,8 @@ dependencies {
     implementation project(':recyclerswipes')
     implementation project(':recyclerswipes-rxbinding')
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.core:core-ktx:$ktx"
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation 'androidx.navigation:navigation-fragment:2.2.1'
@@ -50,8 +50,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
 
-    implementation "io.reactivex.rxjava3:rxjava:3.0.1"
-    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
-    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
-    implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
+    implementation "io.reactivex.rxjava3:rxjava:$rxJava"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxAndroid"
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxKotlin"
+
+    implementation "com.jakewharton.rxbinding3:rxbinding:$rxBinding"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
 }

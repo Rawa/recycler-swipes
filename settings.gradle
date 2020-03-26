@@ -1,4 +1,2 @@
-rootProject.name='RecyclerSwipesSample'
-include ':sample'
-include ':recyclerswipes'
-include ':recyclerswipes-rxbinding'
+rootProject.name='RecyclerSwipes'
+include ':sample', ':recyclerswipes', ':recyclerswipes-rxbinding'
