@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.core.graphics.withTranslation
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -116,22 +117,21 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
     }
 
     private fun renderSwipeView(
-        view: View,
+        swipeView: View,
         c: Canvas,
         width: Int,
         height: Int,
         transX: Float,
         transY: Float
     ) {
-        view.measure(
+        swipeView.measure(
             View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY),
             View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY)
         )
-        view.layout(0, 0, width, height)
-        view.requestLayout()
+        swipeView.layout(0, 0, width, height)
 
         c.withTranslation(transX, transY) {
-            view.draw(c)
+            swipeView.draw(c)
         }
     }
 
