@@ -1,4 +1,4 @@
-# recycler-swipes
+# Recycler Swipes
 
 Simple library to make it easily implement swiping gestures on a recycler view by using xml.
 
@@ -22,6 +22,8 @@ Simple library to make it easily implement swiping gestures on a recycler view b
     swipes.setOnSwipeListener { vH: RecyclerView.ViewHolder, dir: SwipeDirection ->
         ...
     }
+
+For complete example clone the repository and run the sample app.
 
 Prefer to use AppCompat/MaterialComponents due to some elements such as `TextView` having bugs in older versions and does not always behave correctly with `android:singleLine=true`.
 
