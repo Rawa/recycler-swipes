@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rawa.recyclerswipes.OnSwipeListener
@@ -15,24 +15,22 @@ import com.rawa.recyclerswipes.RecyclerSwipes
 import com.rawa.recyclerswipes.SwipeDirection
 import com.rawa.recyclerswipes.attachTo
 import com.rawa.recyclerswipes.sample.R
-import com.rawa.recyclerswipes.sample.ui.adapter.ItemAdapter
+import com.rawa.recyclerswipes.sample.ui.home.adapter.HomeAdapter
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel: HomeViewModel by viewModels()
 
-    private lateinit var adapter: ItemAdapter
+    private lateinit var adapter: HomeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.rv_home_items)
-        adapter = ItemAdapter()
+        adapter = HomeAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {

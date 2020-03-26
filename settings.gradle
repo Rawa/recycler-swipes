@@ -1,3 +1,4 @@
 rootProject.name='RecyclerSwipesSample'
 include ':sample'
 include ':recyclerswipes'
+include ':recyclerswipes-rxbinding'

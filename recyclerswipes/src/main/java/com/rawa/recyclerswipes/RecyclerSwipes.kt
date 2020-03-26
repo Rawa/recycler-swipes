@@ -179,4 +179,3 @@ fun RecyclerSwipes.attachTo(recyclerView: RecyclerView) {
     ith.attachToRecyclerView(recyclerView)
 }
 
-data class SwipeEvent(val viewHolder: RecyclerView.ViewHolder, val direction: SwipeDirection)
