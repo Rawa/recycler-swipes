@@ -145,12 +145,12 @@ class RecyclerSwipes(private val swipeLayouts: Map<SwipeDirection, Int>) :
         this.listener = listener
     }
 
+    @JvmSynthetic
     fun setOnSwipeListener(lambda: ((viewHolder: RecyclerView.ViewHolder, direction: SwipeDirection) -> Unit)) {
         setOnSwipeListener(object : OnSwipeListener {
             override fun onSwipe(viewHolder: RecyclerView.ViewHolder, direction: SwipeDirection) {
                 lambda.invoke(viewHolder, direction)
             }
-
         })
     }
 
